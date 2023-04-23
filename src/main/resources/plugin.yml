@@ -1,0 +1,4 @@
+name: LightWeightBackupWorldPlugin
+version: '${version}'
+main: com.gazim.minecraft_plugin.lightweightbackupworldplugin.LightWeightBackupWorldPlugin
+api-version: 1.19
