@@ -41,15 +41,14 @@ tasks.withType(JavaCompile::class).configureEach {
 
 tasks {
     processResources {
-        val props = linkedMapOf("version" to version)
-        inputs.properties.putAll(LinkedHashSet())
+        val props = "version" to version
+        inputs.properties(props)
         filteringCharset = "UTF-8"
         filesMatching("plugin.yml") {
             expand(props)
         }
     }
 }
-
 
 kotlin {
     jvmToolchain(11)
