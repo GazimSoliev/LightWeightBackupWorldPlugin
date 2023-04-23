@@ -2,16 +2,14 @@ package com.gazim.minecraft_plugin.lightweightbackupworldplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class LightWeightBackupWorldPlugin extends JavaPlugin {
+class LightWeightBackupWorldPlugin : JavaPlugin() {
 
-    @Override
-    public void onEnable() {
+    override fun onEnable() {
         // Plugin startup logic
-
     }
 
-    @Override
-    public void onDisable() {
+    override fun onDisable() {
         // Plugin shutdown logic
     }
+
 }
