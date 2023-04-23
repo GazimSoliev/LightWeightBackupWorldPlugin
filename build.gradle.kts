@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.8.20"
+    id("xyz.jpenilla.run-paper") version "1.1.0"
 }
 
 group = "com.gazim.minecraft_plugin"
@@ -33,13 +34,12 @@ java {
     }
 }
 
-tasks.withType(JavaCompile::class).configureEach {
-    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
-        options.release.set(targetJavaVersion)
-    }
-}
-
 tasks {
+    withType(JavaCompile::class).configureEach {
+        if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible) {
+            options.release.set(targetJavaVersion)
+        }
+    }
     processResources {
         val props = "version" to version
         inputs.properties(props)
@@ -48,8 +48,14 @@ tasks {
             expand(props)
         }
     }
+    runServer {
+        // Configure the Minecraft version for our task.
+        // This is the only required configuration besides applying the plugin.
+        // Your plugin's jar (or shadowJar if present) will be used automatically.
+        minecraftVersion("1.19.4")
+    }
 }
 
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
 }
