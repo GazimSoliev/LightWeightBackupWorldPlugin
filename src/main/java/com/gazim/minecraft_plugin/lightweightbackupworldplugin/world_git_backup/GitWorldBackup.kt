@@ -1,6 +1,6 @@
 package com.gazim.minecraft_plugin.lightweightbackupworldplugin.world_git_backup
 
-import com.gazim.minecraft_plugin.lightweightbackupworldplugin.extension.sendStrMessage
+import com.gazim.minecraft_plugin.lightweightbackupworldplugin.world_type.WorldType
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.PersonIdent
 import org.eclipse.jgit.revwalk.RevCommit
