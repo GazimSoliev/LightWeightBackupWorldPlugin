@@ -1,7 +1,8 @@
 plugins {
+    kotlin("jvm") version "1.8.20"
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.8.20"
     id("xyz.jpenilla.run-paper") version "1.1.0"
+    kotlin("plugin.serialization") version "1.8.21"
 }
 
 group = "com.gazim.minecraft_plugin"
@@ -20,8 +21,13 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    compileOnly(dependencyNotation = "io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0-RC")
+    implementation("com.github.shynixn.mccoroutine:mccoroutine-bukkit-api:2.11.0")
+    implementation("com.github.shynixn.mccoroutine:mccoroutine-bukkit-core:2.11.0")
+    implementation(dependencyNotation = "org.eclipse.jgit:org.eclipse.jgit:3.5.0.201409260305-r")
 }
 
 val targetJavaVersion = 17
