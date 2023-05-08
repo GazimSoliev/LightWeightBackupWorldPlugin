@@ -1,6 +1,7 @@
 package com.gazim.minecraft_plugin.lightweightbackupworldplugin.backup_command
 
 import com.gazim.minecraft_plugin.lightweightbackupworldplugin.backup_command.BackupActions.*
+import com.gazim.minecraft_plugin.lightweightbackupworldplugin.backup_command.Constants.backupCommand
 import com.gazim.minecraft_plugin.lightweightbackupworldplugin.backup_command.Constants.route
 import com.gazim.minecraft_plugin.lightweightbackupworldplugin.extension.sendStrMessage
 import com.gazim.minecraft_plugin.lightweightbackupworldplugin.route.defineAction
@@ -25,7 +26,7 @@ class BackupCommandExecutor(private val plugin: Plugin) : SuspendingCommandExecu
         label: String,
         args: Array<out String>
     ): Boolean {
-        when (route.defineAction(args.toList())) {
+        if (sender.hasPermission(backupCommand)) when (route.defineAction(args.toList())) {
             ArgsError -> sender.sendStrMessage("Args error")
             SaveWorld -> save(sender, WorldType.World)
             SaveWorldNether -> save(sender, WorldType.NetherWorld)
@@ -33,7 +34,7 @@ class BackupCommandExecutor(private val plugin: Plugin) : SuspendingCommandExecu
             ListWorld -> list(sender, WorldType.World)
             ListWorldNether -> list(sender, WorldType.NetherWorld)
             ListWorldTheEnd -> list(sender, WorldType.TheEndWorld)
-        }
+        } else sender.sendStrMessage("You have not permission")
         return true
     }
 
