@@ -1,6 +1,6 @@
 ### Installation:
 1. Download this plugin from releases
-2. Put it into plugins folder in minecraft folder
+2. Put it into plugins folder in minecraft server folder
 3. Restart a server
 
 ### Usage:
